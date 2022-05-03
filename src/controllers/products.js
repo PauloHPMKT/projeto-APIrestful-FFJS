@@ -1,8 +1,12 @@
 const ProductsModel = require('../models/products')
 
 async function get(req, res) {
+
+    const { id } = req.params
     
-    const products = await ProductsModel.find() //listar todos os proddutos
+    const objeto = id ? { _id: id } : null  
+
+    const products = await ProductsModel.find(objeto) //listar todos os proddutos
     
     res.send(products)
 }
