@@ -9,7 +9,8 @@ db.connect()
 
 const app = express()
 
-app.use(express.urlencoded({ extended: true }))
+//habilita server para receber dados form json
+app.use(express.json())
 
 app.use('/api', routes)
 
