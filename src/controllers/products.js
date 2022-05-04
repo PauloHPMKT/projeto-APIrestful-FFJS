@@ -31,7 +31,26 @@ async function post(req, res) {
     })
 }
 
+async function put(req, res) {
+    const { id } = req.params
+
+    const product = await ProductsModel.findByIdAndUpdate({ _id: id }, req.body, { new: true })
+
+    /* trecho de código para atualizar produto
+    const product = await ProductsModel.findById({ _id: id })
+
+    await product.updateOne(req.body) // atualiza tudo 
+    */
+    res.send({
+        messennge: 'success',
+        product,
+    })
+
+}
+
+
 module.exports = {
     get,
     post,
+    put,
 }   
