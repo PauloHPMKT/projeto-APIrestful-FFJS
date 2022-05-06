@@ -8,11 +8,91 @@
 </head>
 <body>
   
+  <h2>Listagem de produtos</h2>
+
+  <ul id="products-list"></ul>
+
+  <hr>
+
+  <h2>Cadastro de produtos</h2>
+
+  <form id="form">
+    <div>
+      <label>Nome</label>
+      <input type="text" name="name">
+    </div>
+    <div>
+      <label>Marca</label>
+      <input type="text" name="brand">
+    </div>
+    <div>
+      <label>Preço</label>
+      <input type="text" name="price">
+    </div>
+    <div>
+      <button type="submit">Cadastrar</button>
+    </div>
+  </form>
+
   <script>
 
-    fetch(`http://localhost:8080/api/products`)
+    const productsList = document.querySelector('#products-list')
+    const form = document.querySelector('#form')
+
+    const API_URL = `http://localhost:8080/api/products`
+
+
+    function obtainList() {
+      //obtem a lista de produtos
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+          
+          const productsHTML = data.map(product => `
+            <li>${product.name} - ${product.brand} - ${product.price}</li>
+          `).join('') 
+  
+          productsList.innerHTML = productsHTML
+  
+        })
+        .catch(err => console.log(err))
+    }
+
+    //chamar função para obter lista
+    obtainList()
+
+
+    //ao cadastrar o produto
+    form.onsubmit = function(e) {
+      e.preventDefault()
+
+      const name = document.forms['form'].name.value
+      const brand = document.forms['form'].brand.value
+      const price = document.forms['form'].price.value
+
+      //requisição do tipo POST
+      fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // definindo o tipo de conteudo que será montado na tela (headers - postman)
+        },
+        body: JSON.stringify({
+          name,
+          brand,
+          price,
+        })
+      })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        if(data.messenge === 'success') {
+          alert('Cadastro realizado com sucesso!')
+          form.reset()
+          obtainList()
+        } else {
+          alert('Ops, ocorreu um erro! tente novamente')
+        }
+      })
+    }
 
   </script>
 
