@@ -1,13 +1,16 @@
 const express = require('express')
-const path = require('path')
+const cors = require('cors')
 
 const db = require('./database')
 const routes = require('./routes')
 
+const app = express()
+
 db.connect()
 
+//habilitando o cors para todos os dominios, API publica
+app.use(cors())
 
-const app = express()
 
 //habilita server para receber dados form json
 app.use(express.json())
