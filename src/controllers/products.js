@@ -28,14 +28,14 @@ async function post(req, res) {
     product.save()
 
     res.send({
-        messenge: 'sucess'
+        message: 'success'
     })
 }
 
 async function put(req, res) {
     const { id } = req.params
 
-    const product = await ProductsModel.findByIdAndUpdate({ _id: id }, req.body, { new: true })
+    const product = await ProductsModel.findOneAndUpdate({ _id: id }, req.body, { new: true })
 
     /* trecho de código para atualizar produto
     const product = await ProductsModel.findById({ _id: id })
@@ -43,7 +43,7 @@ async function put(req, res) {
     await product.updateOne(req.body) // atualiza tudo 
     */
     res.send({
-        messennge: 'success',
+        message: 'success',
         product,
     })
 
@@ -56,6 +56,7 @@ async function remove(req, res) {
 
     const message = remove.ok ? 'success' : 'error'
 
+
     res.send({
         message,
     })
@@ -67,4 +68,4 @@ module.exports = {
     post,
     put,
     remove,
-}       
+}      
