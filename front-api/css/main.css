@@ -81,7 +81,8 @@ a {
   width: 50%;
   height: 43px;
   margin-bottom: 10px;
-  border-radius: 7px;
+  border: 1px solid #cecece;
+  border-radius: 10px;
   padding: 10px;
   font-size: 20px;
 }
@@ -89,9 +90,49 @@ a {
 #form button {
   height: 43px;
   width: 150px;
-  border-radius: 7px;
+  border-radius: 10px;
   font-size: 20px;
   margin: 10px 0;
   cursor: pointer;
+  background-color: #149ebd;
+  color: #fff;
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#formEdit {
+  margin: 30px 0;
+}
+
+#formEdit label {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+#formEdit input {
+  width: 50%;
+  height: 43px;
+  margin-bottom: 10px;
+  border: 1px solid #cecece;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#formEdit button {
+  height: 43px;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  background-color: #149ebd;
+  color: #fff;
+  border: none;
 }
 /*# sourceMappingURL=main.css.map */

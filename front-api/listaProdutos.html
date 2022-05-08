@@ -23,4 +23,35 @@
   </header>
   <main>
     <h1 class="titulo">Listar Item</h1>
+
+    <ul id="products-list"></ul>
+
+    <hr>
+
+    <!--Form edit-->
+    <div id="edit" class="hidden">
+      <h1 class="titulo">Alterar Item</h1>
+      <form id="formEdit">
+        <input type="hidden" name="id">
+        <div>
+          <label>Nome</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <label>Marca</label>
+          <input type="text" name="brand">
+        </div>
+        <div>
+          <label>Preço</label>
+          <input type="text" name="price">
+        </div>
+        <div>
+          <button type="submit">Alterar</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/main.js"></script>
   </main>
+</body>
+</html>
